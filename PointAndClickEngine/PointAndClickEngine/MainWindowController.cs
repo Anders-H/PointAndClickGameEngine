@@ -1,13 +1,21 @@
-﻿namespace PointAndClickEngine
+﻿using System.Windows.Forms;
+
+namespace PointAndClickEngine
 {
-    public class MainWindowController : IGameForm
-
+    public class MainWindowController
     {
-    private IGameForm _owner;
+        private readonly Form _owner;
 
-    public MainWindowController(IGameForm owner)
-    {
-        _owner = owner;
-    }
+
+        public MainWindowController(Form owner)
+        {
+            _owner = owner;
+            _owner.Paint += DoPaint;
+        }
+
+        private void DoPaint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

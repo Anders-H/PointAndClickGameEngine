@@ -3,9 +3,9 @@ using PointAndClickEngine;
 
 namespace TestGame
 {
-    public partial class Form1 : Form, IGameForm
+    public partial class Form1 : Form
     {
-        public static IGameForm Controller { get; set; }
+        public static MainWindowController Controller { get; set; }
 
         public Form1()
         {
@@ -13,4 +13,4 @@ namespace TestGame
             Controller = new MainWindowController(this);
         }
     }
-}s
+}
