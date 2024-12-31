@@ -10,7 +10,7 @@ namespace TestGame
         public Form1()
         {
             InitializeComponent();
-            Controller = new MainWindowController(this);
+            Controller = new MainWindowController(this, 320, 200);
         }
     }
 }
