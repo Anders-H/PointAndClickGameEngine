@@ -14,6 +14,7 @@ namespace PointAndClickEngine
         public int ZoomFactor { get; internal set; }
         public int PhysicalWidth { get; internal set; }
         public int PhysicalHeight { get; internal set; }
+        public Scene CurrentScene { get; set; }
 
         public MainWindowController(Form owner, int actualWidth, int actualHeight)
         {
@@ -27,6 +28,7 @@ namespace PointAndClickEngine
             _owner.Resize += OwnerResize;
             _pictureBox = new PictureBox();
             _pictureBox.Paint += DoGameAreaPaint;
+            _pictureBox.MouseClick += DoPlayFieldClick;
             _owner.Controls.Add(_pictureBox);
         }
 
@@ -83,9 +85,27 @@ namespace PointAndClickEngine
             }
         }
 
+        private void DoPlayFieldClick(object sender, MouseEventArgs e)
+        {
+            var x = e.X;
+            var y = e.Y;
+
+            if (ZoomFactor > 1)
+            {
+                x = x / ZoomFactor;
+                y = y / ZoomFactor;
+            }
+
+            if (CurrentScene != null)
+                CurrentScene.Click(x, y);
+
+            _pictureBox.Invalidate();
+        }
+
         private void DoGameAreaPaint(object sender, PaintEventArgs e)
         {
-            e.Graphics.Clear(Color.DimGray);
+            if (CurrentScene != null)
+                CurrentScene.Paint(e.Graphics, ZoomFactor, ActualWidth, ActualHeight, PhysicalWidth, PhysicalHeight);
         }
     }
 }
