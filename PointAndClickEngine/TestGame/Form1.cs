@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using PointAndClickEngine;
+using TestGame.Scenes;
 
 namespace TestGame
 {
@@ -18,6 +19,16 @@ namespace TestGame
         {
             if (optionStamp.Checked)
                 Controller.CurrentScene = new StampScene();
+
+            Refresh();
+        }
+
+        private void optionButton_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (optionButton.Checked)
+                Controller.CurrentScene = new ButtonScene();
+
+            Refresh();
         }
     }
 }

@@ -41,5 +41,18 @@ namespace PointAndClickEngine
             sprite.Height = sprite.Bitmap.Height;
             return sprite;
         }
+
+        public static Sprite LoadFromBitmap(Bitmap bitmap)
+        {
+            var sprite = new Sprite();
+            sprite.Bitmap = bitmap;
+
+            if (sprite.Bitmap == null)
+                throw new SystemException("Bitmap is null.");
+
+            sprite.Width = sprite.Bitmap.Width;
+            sprite.Height = sprite.Bitmap.Height;
+            return sprite;
+        }
     }
 }

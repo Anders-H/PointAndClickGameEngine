@@ -1,7 +1,7 @@
 ﻿using PointAndClickEngine;
 using TestGame.Properties;
 
-namespace TestGame
+namespace TestGame.Scenes
 {
     public class StampScene : Scene
     {
